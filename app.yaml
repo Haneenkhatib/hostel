@@ -1,12 +1,15 @@
 runtime: php72
-api_version: 1
-threadsafe: true
-
 handlers:
-- url: /
-  static_files: www/index.php
-  upload: www/index.php
-
-- url: /(.*)
-  static_files: www/\1
-  upload: www/(.*)
+- url: /stylesheets
+  static_dir: stylesheets
+- url: .*
+  script: auto
+runtime_config:
+    document_root: .
+env_variables:
+    APP_LOG: errorlog
+    GOOGLE_STORAGE_BUCKET: clinical-276401.appspot.com
+    MYSQL_USER: root
+    MYSQL_PASSWORD: root
+beta_settings:
+    cloud_sql_instances: clinical-276401:us-central1:myinstance
